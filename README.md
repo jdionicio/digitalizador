@@ -1,2 +1,2 @@
-# digitalizador
+# Digitalizador
 Digitalizador VUCEM API
