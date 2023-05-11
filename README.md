@@ -1,11 +1,18 @@
-# Digitalizador
-Digitalizador VUCEM API
-1.- Crear una cuenta en: https://927d-2806-1016-e-d5a-10df-6c41-21f6-2fae.ngrok-free.app
-    *Requiere correo electronico
-2.- Confirmar la cuenta
-3.- Agregar saldo (Produccion)
-4.- Obtener Token con usuario y password registrado
+# Digitalizador VUCEM API
+Cumple con las especificaciones técnicas de digitalización de documentos para la Ventanilla Digital Mexicana de Comercio Exterior (VUCEM).
 
+## Creación de una cuenta
+Antes de consumir el Digitalizador VUCEM API, es necesario crear una cuenta siguiendo los pasos siguientes:
+
+1. Crear una cuenta
+    * Requiere correo electronico.
+    * El EndPoint (URL) de prueba es proporcionado por el proveedor.
+2. Confirmar la cuenta
+3. Agregar saldo (Produccion)
+4. Obtener Token con usuario y password registrado
+
+## Solicitar Token
+```charp
 //Get Token
 var user = new
 {
@@ -14,38 +21,38 @@ var user = new
 };
 
 HttpClient client = new HttpClient();
-var response = await client.PostAsync("https://927d-2806-1016-e-d5a-10df-6c41-21f6-2fae.ngrok-free.app/api/login", new StringContent(JsonSerializer.Serialize(user), Encoding.UTF8, "application/json"));
+var response = await client.PostAsync("https://qa.quiana.app/api/login", new StringContent(JsonSerializer.Serialize(user), Encoding.UTF8, "application/json"));
 //Get Bearer Token
 var result = await response.Content.ReadAsStringAsync();
-
-5.- Enviar archivo para Digitalizar
-
+```
+## Enviar archivo para Digitalizar
+```charp
 //Upload file
 HttpClient client = new HttpClient();
 client.DefaultRequestHeaders.Authorization = new System.Net.Http.Headers.AuthenticationHeaderValue("Bearer", "YourToken");
 
 using(var multipartFormContent = new MultipartFormDataContent())
 {
-    var fs = new StreamContent(File.OpenRead("C:\myarchivo.pdf"));
+    var fs = new StreamContent(File.OpenRead("myarchivo.pdf"));
     fs.Headers.ContentType = new System.Net.Http.Headers.MediaTypeHeaderValue("application/pdf");
 
-    multipartFormContent.Add(fs, name:"file", fileName: Path.GetFileName("C:\myarchivo.pdf"));
+    multipartFormContent.Add(fs, name:"file", fileName: Path.GetFileName("myarchivo.pdf"));
 
-    var response = await client.PostAsync("https://927d-2806-1016-e-d5a-10df-6c41-21f6-2fae.ngrok-free.app/api/digitalizador", multipartFormContent);
+    var response = await client.PostAsync("https://qa.quiana.app/api/digitalizador", multipartFormContent);
     if(response.IsSuccessStatusCode)
     {
         //Get
         var result = await response.Content.ReadAsStringAsync();
     }
 }
-
-6.- Consultar Archivo Digitalizado
-
+```
+## Recuperar o consultar Archivo Digitalizado
+```charp
 HttpClient client = new HttpClient();
 client.DefaultRequestHeaders.Authorization = new System.Net.Http.Headers.AuthenticationHeaderValue("Bearer", "YourToken");
 
 //guid : identificador del archivo
-var response = await client.GetAsync($"https://927d-2806-1016-e-d5a-10df-6c41-21f6-2fae.ngrok-free.app/api/digitalizador?guid=c123019d-0fc2-442f-8134-41431cb9d123c");
+var response = await client.GetAsync($"https://qa.quiana.app/api/digitalizador?guid=c123019d-0fc2-442f-8134-41431cb9d123c");
 if(response.IsSuccessStatusCode)
 {
     var result = await response.Content.ReadAsStringAsync();
@@ -53,7 +60,9 @@ if(response.IsSuccessStatusCode)
     var data = Convert.FromBase64String(fileResult.digitalizado);
     File.WriteAllBytes("MyArchivoDigitalizado_vu.pdf")), data );
 }
-
+```
+## Model de respuesta
+```charp
 public class Digitalizado
 {
     public bool error { get; set; }
@@ -63,3 +72,4 @@ public class Digitalizado
     public string message { get; set; }
     public string digitalizado { get;set; }
 }
+```
