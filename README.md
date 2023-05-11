@@ -1,6 +1,6 @@
 # Digitalizador VUCEM API
 Cumple con las especificaciones técnicas de digitalización de documentos para la Ventanilla Digital Mexicana de Comercio Exterior (VUCEM).
-### Desarrollado por QuianaApps
+### QuianaApps
 - [IDEA] (https://www.quiana.app/idea)
 - [Digitalizador VUCEM] (https://digitalizador.quiana.app/) or
 - [Convertidor PDF] (https://convertidor.quiana.app/)
