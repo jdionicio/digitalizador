@@ -2,7 +2,7 @@
 Cumple con las especificaciones técnicas de digitalización de documentos para la Ventanilla Digital Mexicana de Comercio Exterior (VUCEM).
 ### QuianaApps
 - [IDEA] (https://www.quiana.app/idea)
-- [Digitalizador VUCEM] (https://digitalizador.quiana.app/) or
+- [Digitalizador VUCEM] (https://digitalizador.quiana.app/) 
 - [Convertidor PDF] (https://convertidor.quiana.app/)
 ## Creación de una cuenta
 Antes de consumir el Digitalizador VUCEM API, es necesario crear una cuenta siguiendo los pasos siguientes:
