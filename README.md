@@ -18,7 +18,7 @@ Para realizar la petición es necesario haber creado y confirmado la cuenta, par
 var user = new
 {
     usuario = "usuario@dominio.com",
-    password = "P@ssword23"
+    password = "P@ssword123"
 };
 
 HttpClient client = new HttpClient();
@@ -27,10 +27,11 @@ var response = await client.PostAsync("https://qa.quiana.app/api/login", new Str
 var result = await response.Content.ReadAsStringAsync();
 ```
 ## Enviar archivo para Digitalizar
-Envie cualquier archivo PDF para su digitalización de la siguiente manera:
+Es necesario agregar el token en el encabezado antes de enviar cualquier archivo para su digitalización.
 ```charp
 //Upload file
 HttpClient client = new HttpClient();
+//Add Token
 client.DefaultRequestHeaders.Authorization = new System.Net.Http.Headers.AuthenticationHeaderValue("Bearer", "YourToken");
 
 using(var multipartFormContent = new MultipartFormDataContent())
@@ -49,9 +50,10 @@ using(var multipartFormContent = new MultipartFormDataContent())
 }
 ```
 ## Recuperar o consultar Archivo Digitalizado
-Utilice el identificador unico para recuperar el archivo digitalizado.
+Utilice el identificador unico para recuperar el archivo digitalizado, el proceso de digitalizacion tardara dependiendo del tamaño y peso del documento.
 ```charp
 HttpClient client = new HttpClient();
+//Add Token
 client.DefaultRequestHeaders.Authorization = new System.Net.Http.Headers.AuthenticationHeaderValue("Bearer", "YourToken");
 
 //guid : identificador del archivo
