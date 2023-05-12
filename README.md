@@ -1,20 +1,18 @@
 # Digitalizador VUCEM API
-Cumple con las especificaciones técnicas de digitalización de documentos para la Ventanilla Digital Mexicana de Comercio Exterior (VUCEM).
-### QuianaApps
-- [IDEA] (https://www.quiana.app/idea)
-- [Digitalizador VUCEM] (https://digitalizador.quiana.app/) 
-- [Convertidor PDF] (https://convertidor.quiana.app/)
+Integra tu aplicación de Comercio Exterior, Aduanas , Facturacion , cumplimento, etc. para cumplir con las especificaciones técnicas de digitalización de documentos en la Ventanilla Digital Mexicana de Comercio Exterior (VUCEM) con nuetro API de una manera sencilla y facil.
+
 ## Creación de una cuenta
 Antes de consumir el Digitalizador VUCEM API, es necesario crear una cuenta siguiendo los pasos siguientes:
 
 1. Crear una cuenta
     * Requiere correo electronico.
-    * El EndPoint (URL) de prueba es proporcionado por el proveedor.
+    * Para el registro solicite el URL de prueba a soporte@quiana.app.
 2. Confirmar la cuenta
 3. Agregar saldo (Produccion)
 4. Obtener Token con usuario y password registrado
 
 ## Solicitar Token
+Para realizar la petición es necesario haber creado y confirmado la cuenta, para solicitar el token envie su usuario y password como se muestra en el siguiente ejemplo.
 ```charp
 //Get Token
 var user = new
@@ -29,6 +27,7 @@ var response = await client.PostAsync("https://qa.quiana.app/api/login", new Str
 var result = await response.Content.ReadAsStringAsync();
 ```
 ## Enviar archivo para Digitalizar
+Envie cualquier archivo PDF para su digitalización de la siguiente manera:
 ```charp
 //Upload file
 HttpClient client = new HttpClient();
@@ -50,6 +49,7 @@ using(var multipartFormContent = new MultipartFormDataContent())
 }
 ```
 ## Recuperar o consultar Archivo Digitalizado
+Utilice el identificador unico para recuperar el archivo digitalizado.
 ```charp
 HttpClient client = new HttpClient();
 client.DefaultRequestHeaders.Authorization = new System.Net.Http.Headers.AuthenticationHeaderValue("Bearer", "YourToken");
@@ -76,3 +76,7 @@ public class Digitalizado
     public string digitalizado { get;set; }
 }
 ```
+### QuianaApps
+- [IDEA] (https://www.quiana.app/idea)
+- [Digitalizador VUCEM] (https://digitalizador.quiana.app/) 
+- [Convertidor PDF] (https://convertidor.quiana.app/)
