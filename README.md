@@ -1,4 +1,3 @@
-![DigitalizadorVUCEM](https://convertidor.quiana.app/Content/images/digitalizadorVucem.png)
 # Digitalizador VUCEM API
 Integra tu aplicación de Comercio Exterior, Aduanas , Facturacion , cumplimento, etc. para cumplir con las especificaciones técnicas de digitalización de documentos en la Ventanilla Digital Mexicana de Comercio Exterior (VUCEM) con nuetro API de una manera sencilla y facil.
 
@@ -84,3 +83,6 @@ public class Digitalizado
 - [IDEA] (https://www.quiana.app/idea)
 - [Digitalizador VUCEM] (https://digitalizador.quiana.app/) 
 - [Convertidor PDF] (https://convertidor.quiana.app/)
+<p align="center">
+  <img src="https://convertidor.quiana.app/Content/images/digitalizadorVucem.png?raw=true" alt="DigitalizadorVUCEM"/>
+</p>
