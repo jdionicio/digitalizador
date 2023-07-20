@@ -26,6 +26,10 @@ var response = await client.PostAsync("https://qa.quiana.app/api/login", new Str
 //Get Bearer Token
 var result = await response.Content.ReadAsStringAsync();
 ```
+### Response
+```
+{"token":"eyJhb..."}
+```
 ## Enviar archivo para Digitalizar
 Es necesario agregar el token en el encabezado antes de enviar cualquier archivo para su digitalización.
 ```charp
@@ -49,6 +53,10 @@ using(var multipartFormContent = new MultipartFormDataContent())
     }
 }
 ```
+### Response
+```
+{"guid":"6a5fae21-77d5-4a8d","created":"2022-04-02T08:13:35.6720701-06:00","message":"Digitalizacion de documento finalizado, recupere el documento con el identificador (guid)."}
+```
 ## Recuperar o consultar Archivo Digitalizado
 Utilice el identificador unico para recuperar el archivo digitalizado, el proceso de digitalizacion tardara dependiendo del tamaño y peso del documento.
 ```charp
@@ -65,6 +73,10 @@ if(response.IsSuccessStatusCode)
     var data = Convert.FromBase64String(fileResult.digitalizado);
     File.WriteAllBytes("MyArchivoDigitalizado_vu.pdf")), data );
 }
+```
+### Response
+```
+{"error":false,"guid":"6a5fae21-77d5-4a8d","updated":"2022-04-13T08:13:35.657","filename":"myarchivo.pdf","message":"Documento digitalizado exitosamente.","digitalizado":"base64String"}
 ```
 ## Model de respuesta
 ```charp
