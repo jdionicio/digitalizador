@@ -1,5 +1,5 @@
 # Digitalizador VUCEM API
-Integra tu aplicación de Comercio Exterior, Aduanas , Facturacion , cumplimento, etc. para cumplir con las especificaciones técnicas de digitalización de documentos en la Ventanilla Digital Mexicana de Comercio Exterior (VUCEM) con nuetro API de una manera sencilla y facil.
+Integra tu aplicación de Comercio Exterior, Aduanas, Facturacion, cumplimento, etc. para cumplir con las especificaciones técnicas de digitalización de documentos en la Ventanilla Digital Mexicana de Comercio Exterior (VUCEM) con nuestro API de una manera sencilla y facil.
 
 ## Creación de una cuenta
 Antes de consumir el Digitalizador VUCEM API, es necesario crear una cuenta siguiendo los pasos siguientes:
